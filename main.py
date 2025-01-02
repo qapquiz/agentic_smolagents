@@ -1,9 +1,9 @@
 import os
-
-from typing import List
 from collections import namedtuple
+from typing import List
 
 from dotenv import load_dotenv
+from huggingface_hub import HfApi
 from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from markitdown import MarkItDown
@@ -68,9 +68,9 @@ def main():
 
     agent = CodeAgent(
         tools=[retriever_tool],
-        model=HfApiModel("meta-llama/Llama-3.3-70B-Instruct"),
+        model=HfApiModel("meta-llama/Meta-Llama-3-8B-Instruct"),
         max_iterations=4,
-        verbose=True
+        verbose=True,
     )
 
     agent_output = agent.run("What is my name?")
