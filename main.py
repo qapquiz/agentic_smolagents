@@ -73,10 +73,14 @@ def main():
         verbose=True,
     )
 
-    agent_output = agent.run("What is my name?")
-
-    print("Final outupt:")
-    print(agent_output)
+    try:
+        while True:
+            prompt = input("prompt: ")
+            agent_output = agent.run(prompt)
+            print("Final outupt:")
+            print(agent_output)
+    except KeyboardInterrupt:
+        print("\nProgram interrupted by the user. Exiting...")
 
 
 if __name__ == "__main__":
